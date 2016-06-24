@@ -396,7 +396,6 @@ test_true_int = [v for i, v in enumerate(true_int) if i not in training_indices]
 
 
 ```{python}
-
 cm = confusion_matrix(test_pred_int,test_true_int)
 print(classification_report(test_pred_int, test_true_int, target_names=[l for l in label_list]))
     
@@ -405,10 +404,20 @@ plot_confusion_matrix(cm_normalized)
 ```
 
 
-Notice that this is TERRIBLE! The main reason is that we are using 1 known training example as our template. 
-Let's do something more intelligent with a full kNN as the underlying algorithm and DTW as the distance metric.
+Notice that this is TERRIBLE! The main reason is that we are using 1 known training example as our template. How would we improve this? If we do something more intelligent with a full kNN as the underlying algorithm and DTW as the distance metric. We do exactly that in the full analysis: 
+ slides_link : http://sflscientific.com/presentations-and-conference-talks/
 
+ULtimately, using a k-Nearest Neighbour vote. The methodology of comparing time-sequences is identical to the above, except we use a k-Nearest Nieghbour algorithm:
 
+```{python}
+Image('images/dtw_knn_schematic.png',width=780)
+```
+
+With the exat same methodology, we find the following confusion matrix:
+```{python}
+Image('images\final_confmatrix.jpg')
+```
+which is definitely very reasonable for such a simiple algorithm. 
 
 # Final Thoughts
 
