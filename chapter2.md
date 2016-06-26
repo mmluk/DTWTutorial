@@ -38,17 +38,14 @@ Image('images/dtw_dummy.jpeg')
 Have a look at the plot that showed up in the viewer. Which type of measure would give a greater similarity between red and blue curves, when you use the black vertical lines to compare points?
 
 *** =instructions
-- Euclidean matching
-- DTW matching
+- Is the similarity for Euclidean matching or DTW matching better?
 
 *** =hint
-Have a look at the plot. Are points in the curves connected by the black lines more or less similar.
+- Have a look at the plot. Are points in the curves connected by the black lines more or less similar.
 
 
 *** =sct
 ```{r}
-# SCT written with pythonwhat: https://github.com/datacamp/pythonwhat/wiki
-
 msg_bad = "That is not correct!"
 msg_success = "Exactly!"
 test_mc(2, [msg_bad, msg_success])
@@ -63,7 +60,7 @@ Image('images/path_differences.png')
 ```
 The figure above left shows the typical Euclidean matching between two waves.  Starting in the bottom left, the first instance in the sequence of the time-series A and B are compared to each other. Then the second instance is compared to the second and so on until the end of one of the shorter sequences.
 
-For DTW, the figure above right, represents a walk over the optimal path. The optimal path is determined by finding the maximum similarity score between the two time-series.
+For DTW, thec figure above right, represents a walk over the optimal path. The optimal path is determined by finding the maximum similarity score between the two time-series.
 
 
 *** =pre_exercise_code
@@ -101,20 +98,19 @@ Both `labels` and `data` are stored in numpy arrays and can be accessed as a sta
 *** =instructions
 - What labels to the files 0 and 8 have? 
 - Import matplotlib.pyplot as `plt`
-- Use `plt.scatter()` to plot `data[0]` and `data[8]` onto the same image. You should use the first positional argument, and the `c` keyword.
+- Use `plt.plot()` to plot `data[0]` and `data[8]` onto the same image. You should use the first positional argument, and the `label` keyword, `alpha` keyword with 0.2 as the shading.
 - Show the plot using `plt.show()`.
 
 *** =hint
 - You don't have to program anything for the first instruction, just take a look at the first line of code.
 - Use `import ___ as ___` to import `matplotlib.pyplot` as `plt`.
-- Use `plt.scatter(___, ___, c = ___)` for the third instruction.
-- You'll always have to type in `plt.show()` to show the plot you created.
+- Use `plt.plot(___,label=___,alpha=0.2)` for the third instruction.
 
 
 *** =sample_code
 ```{python}
 # Show the labels for file 0 and 8.
-plot('label for file 0 is:,labels[0])
+plot('label for file 0 is:',labels[0])
 
 
 # Import matplotlib.pyplot
@@ -123,7 +119,6 @@ plot('label for file 0 is:,labels[0])
 # Make a scatter plot: with data of files 0 and 8 and set c to ints
 
 
-# Show the plot
 
 ```
 
@@ -145,9 +140,6 @@ plt.ylabel('Amplitude')
 plt.xlabel('Measurement')
 plt.legend()
 
-
-# Show the plot
-plt.show()
 ```
 
 *** =sct
@@ -156,15 +148,17 @@ plt.show()
 
 
 test_object("data",
-            undefined_msg = "Don't remove the definition of the predefined `ints` object.",
-            incorrect_msg = "Don't change the definition of the predefined `ints` object.")
-
+            undefined_msg = "Don't remove the definition of the predefined `data` object.",
+            incorrect_msg = "Don't change the definition of the predefined `data` object.")
+test_object("labels",
+            undefined_msg = "Don't remove the definition of the predefined `labels` object.",
+            incorrect_msg = "Don't change the definition of the predefined `labels` object.")
+            
 test_import("matplotlib.pyplot", same_as = True)
 
 test_function("matplotlib.pyplot.plot",
-              incorrect_msg = "You didn't use `plt.scatter()` correctly, have another look at the instructions.")
+              incorrect_msg = "You didn't use `plt.plot()` correctly, have another look at the instructions.")
 
-test_function("matplotlib.pyplot.show")
 
 success_msg("Great work!")
 ```
@@ -234,7 +228,7 @@ dist, cost, acc, path = dtw(x, y, dist=lambda x, y: np.linalg.norm(x - y, ord=1)
 print('Minimum distance found:', dist)
 ```
 
-Notice that we need to specify a norm. The norm is used to compare the elements of each step, with the sum of these the total cost of the path. We can plot the optimal path that the algorithm using this particular norm as follows:
+Notice that we need to specify a distance score `dist`. This is a norm used to compare the elements of each step, with the sum of these the total cost of the path. We can plot the optimal path that the algorithm using this particular norm as follows:
 
 ```{python}
 # plot the path
@@ -247,7 +241,31 @@ ylabel('Sample '+str(id2))
 plt.title('np.linalg.norm(x-y)')
 ```
 
-You can also specify your own norm used to determine the cost measure by the DTW as follows:
+You can also specify your own norm used to determine the cost measure by the DTW.
+*** =instructions
+- Define a `my_custom_norm` function that that takes two arguments `x` and `y` and returns the square of the difference
+- Use your custom norm in the computation for the dtw algorithm
+- Print out the minimum distance
+- Plot the minimum distance path taken by the algorithm
+
+*** =hint
+- The square of the difference is (x-y)*(x-y)
+- Replace the argument dist=... with dist=my_custom_norm
+- use the above code example to replot with your results
+
+*** =sample_code
+```{python}
+# define your custom norm
+def my_custom_norm(x,y):
+
+# run dtw
+
+# print out the minimum distance between x and y
+
+# plot the path
+```
+
+*** =solution
 ```{python}
 def my_custom_norm(x, y):
     return (x - y)*(x - y)
@@ -262,6 +280,18 @@ xlim((-0.5, acc.shape[0]-0.5))
 ylim((-0.5, acc.shape[1]-0.5))
 plt.title('custom norm')
 ```
+
+
+*** =sct
+```{python}
+# SCT written with pythonwhat: https://github.com/datacamp/pythonwhat/wiki
+
+test_function("my_custom_norm",
+              incorrect_msg = "You didn't define `my_custom_norm` correctly, have another look at the instructions.")
+
+success_msg("Great work!")
+```
+
 
 You can obviously play with the variety of norm you would like, some will be more suitable for different cases as with all normalisation methods and represent a good paramter to tune.
 
@@ -278,9 +308,7 @@ plt.title('np.linalg default norm')
 print('Minimum distance found:', dist)
 ```
 
-Lets apply this to all files in the dataset. For this naive example, let's find one file of each word type and use this as a template training example. 
-
-Obviously this is not ideal, in accuracy or complexity but there are use cases where we know some underlying true 'template' that we want to dig out of some time-series data. 
+Lets apply this to all files in the dataset. For this naive example, let's find one file of each word type and use this as a template training example. Obviously this is not ideal, in accuracy or complexity but there are use cases where we know some underlying true 'template' that we want to dig out of some time-series data. 
 
 We will revisit a better algorithm afterwards.
 
@@ -314,7 +342,7 @@ We now loop over all files in our dataset and compare it with each template. The
 **THIS WILL TAKE A WHILE!!!**
 ```{python}
 pred_label = []
-pred_score = []
+new_rate = 200
 print('total files:',len(labels))
 for f in range(0,len(labels)):
     if not (f % 25):
@@ -322,13 +350,10 @@ for f in range(0,len(labels)):
     test_rate,test_data  = scipy.io.wavfile.read('data/sounds/{}.wav'.format(f))
     
     # down sample and normalise
-    data_sampled = sig.decimate(test_data, int(test_rate/new_rate), axis=0, ftype='fir')
-    data_sampled -= np.nanmean(data_sampled)
-    data_sampled /= np.nanstd(data_sampled)
-
+    data_sampled = normalise_data(test_data,test_rate,new_rate)
+    
     # initialise some variables
     min_dist = np.inf
-    score_list = []
     for template in template_data:
         # compute the distance to each template one at a time
         dist, _, _, _ = dtw(data_sampled.reshape(-1,1), template_data[str(template)].reshape(-1,1), dist=lambda x, y: np.linalg.norm(x - y, ord=1))
@@ -336,28 +361,26 @@ for f in range(0,len(labels)):
             # save the current best template details
             min_dist = dist
             pred = template
-        # save the distance score to a list
-        score_list.append(dist)
-    
+  
     if not (f % 25):
         print('Completed file',f,'closest match',pred)
     
     # save the predicted labels
     pred_label.append(pred)
-    
-    # save the list of scores
-    pred_score.append(score_list)
   ```
+
+We now have a list of predicted labels `pred_label`, one for each of the original 245 files - i.e. we have also included the template waves in this list. To get a proper validation score, we will remove the training template instances.
   
-  
-Let's now see how this does in terms of accuracy on the test set. 
+To do this, let's define a plotting script:
 ```{python}
-
 # define a plotting script for the confusion matrix
-from sklearn.metrics import confusion_matrix
-from sklearn.metrics import classification_report
+def plot_confusion_matrix(cm,target_names=[], title='Confusion matrix', cmap=plt.cm.Greens):
+    from sklearn.metrics import confusion_matrix
+    from sklearn.metrics import classification_report
+    
+    print(classification_report(test_pred_int, test_true_int, target_names=target_names))
+    cm_normalized = cm.astype('float') / cm.sum(axis=1)[:, np.newaxis]
 
-def plot_confusion_matrix(cm, title='Confusion matrix', cmap=plt.cm.Greens):
     plt.figure(figsize=(5,5))
     plt.imshow(cm, interpolation='nearest', cmap=cmap)
     plt.title(title)
@@ -369,11 +392,8 @@ def plot_confusion_matrix(cm, title='Confusion matrix', cmap=plt.cm.Greens):
     plt.tight_layout()
     plt.ylabel('True label')
     plt.xlabel('Predicted label')
-    
 ```
-
-
-The plotting script requires a list of ints rather than strs so we convert the list of str to list of ints:
+The plotting script requires a list of ints rather than strs so we convert the list of str to list of ints. We first define a dictionary `label_dict` to convert the labels to ints, and also an array `label_list` to convert the ints back to the labels.
 ```{python}
 # create a dict of str names to int names
 label_dict = {}
@@ -383,7 +403,30 @@ for x in set(true_label):
     label_dict[x] = i
     label_list.append(x)
     i+=1
+```
+Now use the dictionary to do the conversion for both the `true_label` and `pred_label` for the test set.
+*** =instructions
+- transform `true_label` to a list of ints called `true_int`
+- similarly define `pred_int`
+- subset only elements in the test set (i.e. not in the array `training_indices`), denote these `test_true_int` and `test_pred_int`
 
+*** =hint
+- There are many ways to do this, you can use python's list comprehension (i.e. something like this `[x for x in true_label]`)
+- Use an `if not in training_indices` clause to subset out the training elements and keep the others
+
+*** =sample_code
+```{python}
+# list of ints for true and predicted labels 
+true_int = ...
+pred_int = ...
+
+# list of ints for true and predicted only test set
+test_true_int = ...
+test_pred_int = ...
+```
+
+*** =solution
+```{python}
 # int classes for the true and predicted. 
 true_int = [label_dict[l] for l in true_label]
 pred_int = [label_dict[l] for l in pred_label]
@@ -391,33 +434,69 @@ pred_int = [label_dict[l] for l in pred_label]
 # int classes for true and predicted, just the test set.
 test_pred_int = [v for i, v in enumerate(pred_int) if i not in training_indices]
 test_true_int = [v for i, v in enumerate(true_int) if i not in training_indices]
-
 ```
 
 
+*** =sct
+```{python}
+# SCT written with pythonwhat: https://github.com/datacamp/pythonwhat/wiki
+test_object("true_int",
+            undefined_msg = "Don't remove the definition of the predefined `true_int` object.",
+            incorrect_msg = "Don't change the definition of the predefined `true_int` object.")
+test_object("pred_int",
+            undefined_msg = "Don't remove the definition of the predefined `pred_int` object.",
+            incorrect_msg = "Don't change the definition of the predefined `pred_int` object.")
+test_object("test_pred_int",
+            undefined_msg = "Don't remove the definition of the predefined `test_pred_int` object.",
+            incorrect_msg = "Don't change the definition of the predefined `test_pred_int` object.")
+test_object("test_true_int",
+            undefined_msg = "Don't remove the definition of the predefined `test_true_int` object.",
+            incorrect_msg = "Don't change the definition of the predefined `test_true_int` object.")
+
+success_msg("Great work!")
+```
+
+
+Let's now see how this does in terms of accuracy on the test set. 
 ```{python}
 cm = confusion_matrix(test_pred_int,test_true_int)
-print(classification_report(test_pred_int, test_true_int, target_names=[l for l in label_list]))
-    
-cm_normalized = cm.astype('float') / cm.sum(axis=1)[:, np.newaxis]
-plot_confusion_matrix(cm_normalized)
+plot_confusion_matrix(cm,target_names=label_list)
 ```
 
 
-Notice that this is TERRIBLE! The main reason is that we are using 1 known training example as our template. How would we improve this? If we do something more intelligent with a full kNN as the underlying algorithm and DTW as the distance metric. We do exactly that in the full analysis: 
+Notice that this is TERRIBLE! Can you think of why? 
+*** =instructions
+- Do you think it's caused by downsampling?
+- Only one training example for each class?
+- Is DTW just a poor similarity measure?
+- Is the norm a poor choice?
+
+*** =hint
+- Think about how different two files with the same labels were, were they very similar or very different?
+
+*** =sct
+```{r}
+msg_bad = "That is not correct!"
+msg_success = "Exactly!"
+msg_bad = "That is not correct!"
+msg_bad = "That is not correct!"
+test_mc(4, [msg_bad, msg_success,msg_bad,msg_bad])
+```
+
+The main reason is likely that we are using 1 known training example as our template. Downsampling to 200Hz, will have an impact, which you can check but even at the full rate, the accuracy will not improve vastly.
+
+So, how would we improve this? If we do something more intelligent with a full kNN as the underlying algorithm and DTW as the distance metric. We do exactly that in the full analysis, whose details can be found: 
  slides_link : http://sflscientific.com/presentations-and-conference-talks/
 
-ULtimately, using a k-Nearest Neighbour vote. The methodology of comparing time-sequences is identical to the above, except we use a k-Nearest Nieghbour algorithm:
-
+The methodology of comparing time-sequences is identical to the above, except we use a k-Nearest Nieghbour algorithm:
 ```{python}
 Image('images/dtw_knn_schematic.png',width=780)
 ```
-
-With the exat same methodology, we find the following confusion matrix:
+Where, the k nearest neighbours vote on the class label of the test elements. Indeed, with the same methodology but with a k=3 Nearest Neighbour algorithm, we end up with the following confusion matrix:
 ```{python}
 Image('images\final_confmatrix.jpg')
 ```
-which is definitely very reasonable for such a simiple algorithm. 
+which is definitely very reasonable!
 
 # Final Thoughts
 
