@@ -38,7 +38,8 @@ Image('images/dtw_dummy.jpeg')
 Have a look at the plot that showed up in the viewer. Which type of measure would give a greater similarity between red and blue curves, when you use the black vertical lines to compare points?
 
 *** =instructions
-- Is the similarity for Euclidean matching or DTW matching better?
+- Is the similarity score for Euclidean matching better
+- or DTW matching better
 
 *** =hint
 - Have a look at the plot. Are points in the curves connected by the black lines more or less similar.
@@ -56,6 +57,7 @@ In general, events that have similar shapes but different magnitudes, lengths an
 
 *** =pre_exercise_code
 ```{r}
+from IPython.display import Image
 Image('images/path_differences.png')
 ```
 The figure above left shows the typical Euclidean matching between two waves.  Starting in the bottom left, the first instance in the sequence of the time-series A and B are compared to each other. Then the second instance is compared to the second and so on until the end of one of the shorter sequences.
