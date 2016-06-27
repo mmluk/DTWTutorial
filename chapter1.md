@@ -107,8 +107,7 @@ Both `labels` and `data` are stored in numpy arrays and can be accessed as a sta
 - You don't have to program anything for the first instruction, just take a look at the first line of code.
 - Use `import ___ as ___` to import `matplotlib.pyplot` as `plt`.
 - Use `plt.plot(___,label=___,alpha=0.2)` for the third instruction.
-
-
+- 
 *** =sample_code
 ```{python}
 # Show the labels for file 0 and 8.
