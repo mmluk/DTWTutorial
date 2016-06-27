@@ -34,15 +34,15 @@ import matplotlib.pyplot as plt
 Image('images/dtw_dummy.jpeg')
 ```
 
-
 Have a look at the plot that showed up in the viewer. Which type of measure would give a greater similarity between red and blue curves, when you use the black vertical lines to compare points?
 
+In which case will the similarity score be better (i.e. the case where the waves are more similar): 
 *** =instructions
-- Is the similarity score for Euclidean matching better
-- or DTW matching better
+- Euclidean matching better
+- DTW matching better
 
 *** =hint
-- Have a look at the plot. Are points in the curves connected by the black lines more or less similar.
+- Have a look at the plot. In which case, are points in the curves connected by the black lines more similar.
 
 
 *** =sct
