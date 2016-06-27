@@ -406,6 +406,7 @@ for x in set(true_label):
     i+=1
 ```
 Now use the dictionary to do the conversion for both the `true_label` and `pred_label` for the test set.
+
 *** =instructions
 - transform `true_label` to a list of ints called `true_int`
 - similarly define `pred_int`
@@ -466,6 +467,7 @@ plot_confusion_matrix(cm,target_names=label_list)
 
 
 Notice that this is TERRIBLE! Can you think of why? 
+
 *** =instructions
 - Do you think it's caused by downsampling?
 - Only one training example for each class?
@@ -474,6 +476,7 @@ Notice that this is TERRIBLE! Can you think of why?
 
 *** =hint
 - Think about how different two files with the same labels were, were they very similar or very different?
+
 
 *** =sct
 ```{r}
