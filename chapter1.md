@@ -52,6 +52,7 @@ test_mc(2, [msg_bad, msg_success])
 ```
 
 In general, events that have similar shapes but different magnitudes, lengths and especially phases can prevent a machine from correctly identifying sequences as similar events using traditional distance metrics. DTW allows us to get around this issue by asynchronously mapping the curves together.
+<center><img src="http://www.analyticsvidhya.com/wp-content/uploads/2016/06/Capture_LoanAmount.png"></center>
 
 <center><img src="https://raw.githubusercontent.com/mmluk/DTWTutorial/master/Images/path_differences.png"></center>
 
