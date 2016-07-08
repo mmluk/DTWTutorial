@@ -54,16 +54,13 @@ test_mc(2, [msg_bad, msg_success])
 In general, events that have similar shapes but different magnitudes, lengths and especially phases can prevent a machine from correctly identifying sequences as similar events using traditional distance metrics. DTW allows us to get around this issue by asynchronously mapping the curves together.
 
 
-*** =pre_exercise_code
 <center><img src="https://github.com/mmluk/DTWTutorial/tree/master/Images/path_differences.png"></center>
+
 The figure above left shows the typical Euclidean matching between two waves.  Starting in the bottom left, the first instance in the sequence of the time-series A and B are compared to each other. Then the second instance is compared to the second and so on until the end of one of the shorter sequences.
 
 For DTW, thec figure above right, represents a walk over the optimal path. The optimal path is determined by finding the maximum similarity score between the two time-series.
 
-
-*** =pre_exercise_code
 <center><img src="https://github.com/mmluk/DTWTutorial/tree/master/Images/allpaths.png"></center>
-
 
 To find the optimal path, DTW checks all possible paths (subject to certain constraints) from the bottom left to the top right, computing the equivalent of a similarity score between the waves for each. The one with the largest similarity is kept.
 
@@ -493,7 +490,6 @@ The methodology of comparing time-sequences is identical to the above, except we
 
 Where, the k nearest neighbours vote on the class label of the test elements. Indeed, with the same methodology but with a k=3 Nearest Neighbour algorithm, we end up with the following confusion matrix:
 <center><img src="https://github.com/mmluk/DTWTutorial/tree/master/Images/final_confmatrix.png"></center>
-
 
 which is definitely very reasonable!
 
