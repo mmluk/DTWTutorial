@@ -26,8 +26,6 @@ time-series have:
 *** =sct
 ```{r}
 msg_bad = "That is not correct!"
-msg_bad = "That is not correct!"
-msg_bad = "That is not correct!"
 msg_success = "Exactly!"
 test_mc(4, [msg_bad,msg_bad,msg_bad,msg_success])
 ```
