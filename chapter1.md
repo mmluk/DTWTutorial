@@ -93,8 +93,8 @@ A dataset of file labels, `labels`, and data `data`,  is available in the worksp
 # import scipy libraries to load data
 import scipy.io.wavfile
 import scipy.signal as sig
-
-with open('data/sounds/wavToTag.txt') as f:
+https://raw.githubusercontent.com/mmluk/DTWTutorial/master/
+with open('https://raw.githubusercontent.com/mmluk/DTWTutorial/master/data/sounds/wavToTag.txt') as f:
     labels = np.array([l.replace('\n', '') for l in f.readlines()])
 
 data = []
