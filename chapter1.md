@@ -15,6 +15,23 @@ This measure distinguishes the underlying pattern rather than looking for an exa
 
 Much of the following material is taken from our blog and case studies from our website: http://www.sflscientific.com
 
+*** =instructions
+What cases is DTW useful for when comparing two time-series?
+time-series have:
+- different phases 
+- different total lengths
+- different pause lengths
+- all of the above
+
+*** =sct
+```{r}
+msg_bad = "That is not correct!"
+msg_bad = "That is not correct!"
+msg_bad = "That is not correct!"
+msg_success = "Exactly!"
+test_mc(4, [msg_bad,msg_bad,msg_bad,msg_success])
+```
+
 ## DTW as a distance
 
 Figure 1 shows what happens when we compare two time-series, symbolised as a red wave and a blue wave. The top image shows Euclidean matching, which is 1-1. The similarity score between these waves measured by a Euclidean metric would be poor, even though the rough shape of the waves (i.e. the peaks, troughs and plateaus) are similar.
@@ -35,8 +52,8 @@ import matplotlib.pyplot as plt
 
 Have a look at the plot that showed up in the viewer. Which type of measure would give a greater similarity between red and blue curves, when you use the black vertical lines to compare points?
 
-In which case will the similarity score be better (i.e. the case where the waves are more similar): 
 *** =instructions
+In which case will the similarity score be better (i.e. the case where the waves are more similar): 
 - Euclidean matching better
 - DTW matching better
 
