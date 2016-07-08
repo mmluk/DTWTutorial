@@ -493,13 +493,12 @@ So, how would we improve this? If we do something more intelligent with a full k
  slides_link : http://sflscientific.com/presentations-and-conference-talks/
 
 The methodology of comparing time-sequences is identical to the above, except we use a k-Nearest Nieghbour algorithm:
-```{python}
-Image('images/dtw_knn_schematic.png',width=780)
-```
+<center><img src="https://github.com/mmluk/DTWTutorial/tree/master/Images/dtw_knn_schematic.png"></center>
+
 Where, the k nearest neighbours vote on the class label of the test elements. Indeed, with the same methodology but with a k=3 Nearest Neighbour algorithm, we end up with the following confusion matrix:
-```{python}
-Image('images\final_confmatrix.jpg')
-```
+<center><img src="https://github.com/mmluk/DTWTutorial/tree/master/Images/final_confmatrix.png"></center>
+
+
 which is definitely very reasonable!
 
 # Final Thoughts
