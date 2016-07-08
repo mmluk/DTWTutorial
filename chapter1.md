@@ -23,6 +23,9 @@ time-series have:
 - different pause lengths
 - all of the above
 
+*** =hint
+DTW is very useful!
+
 *** =sct
 ```{r}
 msg_bad = "That is not correct!"
@@ -105,16 +108,16 @@ import numpy as np
 Both `labels` and `data` are stored in numpy arrays and can be accessed as a standard array. Let's have a look at what the raw data looks like.
 
 *** =instructions
-- What labels to the files 0 and 8 have? 
+What labels to the files 0 and 8 have? 
 - Import matplotlib.pyplot as `plt`
 - Use `plt.plot()` to plot `data[0]` and `data[8]` onto the same image. You should use the first positional argument, and the `label` keyword, `alpha` keyword with 0.2 as the shading.
 - Show the plot using `plt.show()`.
 
 *** =hint
-- You don't have to program anything for the first instruction, just take a look at the first line of code.
+You don't have to program anything for the first instruction, just take a look at the first line of code.
 - Use `import ___ as ___` to import `matplotlib.pyplot` as `plt`.
 - Use `plt.plot(___,label=___,alpha=0.2)` for the third instruction.
-- 
+
 *** =sample_code
 ```{python}
 # Show the labels for file 0 and 8.
