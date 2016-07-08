@@ -31,7 +31,6 @@ from IPython.display import Image
 import matplotlib.pyplot as plt
 %matplotlib inline
 %pylab inline
-Image('images/dtw_dummy.jpeg')
 ```
 
 Have a look at the plot that showed up in the viewer. Which type of measure would give a greater similarity between red and blue curves, when you use the black vertical lines to compare points?
@@ -56,19 +55,16 @@ In general, events that have similar shapes but different magnitudes, lengths an
 
 
 *** =pre_exercise_code
-```{r}
-from IPython.display import Image
-Image('images/path_differences.png')
-```
+<center><img src="https://github.com/mmluk/DTWTutorial/tree/master/Images/path_differences.png"></center>
 The figure above left shows the typical Euclidean matching between two waves.  Starting in the bottom left, the first instance in the sequence of the time-series A and B are compared to each other. Then the second instance is compared to the second and so on until the end of one of the shorter sequences.
 
 For DTW, thec figure above right, represents a walk over the optimal path. The optimal path is determined by finding the maximum similarity score between the two time-series.
 
 
 *** =pre_exercise_code
-```{r}
-Image('images/allpaths.png')
-```
+<center><img src="https://github.com/mmluk/DTWTutorial/tree/master/Images/allpaths.png"></center>
+
+
 To find the optimal path, DTW checks all possible paths (subject to certain constraints) from the bottom left to the top right, computing the equivalent of a similarity score between the waves for each. The one with the largest similarity is kept.
 
 
