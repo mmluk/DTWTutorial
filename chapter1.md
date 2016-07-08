@@ -15,6 +15,10 @@ This measure distinguishes the underlying pattern rather than looking for an exa
 
 Much of the following material is taken from our blog and case studies from our website: http://www.sflscientific.com
 
+*** =pre_exercise_code
+```{r}
+```
+
 *** =instructions
 What cases is DTW useful for when comparing two time-series?
 time-series have:
