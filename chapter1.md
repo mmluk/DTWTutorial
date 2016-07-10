@@ -70,7 +70,7 @@ Have a look at the plot. In which case, are points in the curves connected by th
 ```{python}
 msg1 = "Great job!"
 msg2 = "Wrong, try again. Maybe have a look at the hint."
-test_mc(correct = 2, msgs = [msg1, msg2])
+test_mc(correct = 1, msgs = [msg1, msg2])
 
 success_msg("Well done! Now move on and explore some of the features in more detail.")
 ```
@@ -113,8 +113,8 @@ import numpy as np
 
 Both `labels` and `data` are stored in numpy arrays and can be accessed as a standard array. Let's have a look at what the raw data looks like.
 
-*** =instructions
 What labels to the files 0 and 8 have? 
+*** =instructions
 - Import matplotlib.pyplot as `plt`
 - Use `plt.plot()` to plot `data[0]` and `data[8]` onto the same image. You should use the first positional argument, and the `label` keyword, `alpha` keyword with 0.2 as the shading.
 - Show the plot using `plt.show()`.
@@ -504,7 +504,7 @@ msg1 = "Great job!"
 msg2 = "Wrong, try again. Maybe have a look at the hint."
 msg3 = "Not so good... Maybe have a look at the hint."
 msg4 = "Incorrect. Maybe have a look at the hint."
-test_mc(correct = 2, msgs = [msg1, msg2, msg3, msg4])
+test_mc(correct = 1, msgs = [msg1, msg2, msg3, msg4])
 
 success_msg("Well done! Now move on and explore some of the features in more detail.")
 
