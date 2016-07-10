@@ -90,7 +90,7 @@ For DTW, thec figure above right, represents a walk over the optimal path. The o
 To find the optimal path, DTW checks all possible paths (subject to certain constraints) from the bottom left to the top right, computing the equivalent of a similarity score between the waves for each. The one with the largest similarity is kept.
 
 
---- type:NormalExercise lang:python xp:100 skills:1 key:10223ad896
+--- type:NormalExercise lang:python xp:100 skills:1 key:fd14aa3eab
 ## A Simple Example
 
 Let's start with a naive speech recognition example of DTW to show how the algorithm works, and then we will suggest a more complicated version of the analysis that can be found on our website.
