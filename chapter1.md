@@ -38,6 +38,7 @@ msg_success = "Exactly!"
 test_mc(4, [msg_bad,msg_bad,msg_bad,msg_success])
 ```
 
+--- type:MultipleChoiceExercise lang:python xp:50 skills:2 key:7f5cb08579
 ## DTW as a distance
 
 Figure 1 shows what happens when we compare two time-series, symbolised as a red wave and a blue wave. The top image shows Euclidean matching, which is 1-1. The similarity score between these waves measured by a Euclidean metric would be poor, even though the rough shape of the waves (i.e. the peaks, troughs and plateaus) are similar.
@@ -58,20 +59,22 @@ import matplotlib.pyplot as plt
 
 Have a look at the plot that showed up in the viewer. Which type of measure would give a greater similarity between red and blue curves, when you use the black vertical lines to compare points?
 
-*** =instructions
 In which case will the similarity score be better (i.e. the case where the waves are more similar): 
+*** =instructions
 - Euclidean matching better
 - DTW matching better
 
 *** =hint
-- Have a look at the plot. In which case, are points in the curves connected by the black lines more similar.
+Have a look at the plot. In which case, are points in the curves connected by the black lines more similar.
 
 
 *** =sct
-```{r}
-msg_bad = "That is not correct!"
-msg_success = "Exactly!"
-test_mc(2, [msg_bad, msg_success])
+```{python}
+msg1 = "Great job!"
+msg2 = "Wrong, try again. Maybe have a look at the hint."
+test_mc(correct = 2, msgs = [msg1, msg2])
+
+success_msg("Well done! Now move on and explore some of the features in more detail.")
 ```
 
 In general, events that have similar shapes but different magnitudes, lengths and especially phases can prevent a machine from correctly identifying sequences as similar events using traditional distance metrics. DTW allows us to get around this issue by asynchronously mapping the curves together.
@@ -423,8 +426,7 @@ for x in set(true_label):
 Now use the dictionary to do the conversion for both the `true_label` and `pred_label` for the test set.
 
 *** =instructions
-- transform `true_label` to a list of ints called `true_int`
-- similarly define `pred_int`
+- transform `pred_label` to a list of ints called `pred_int`
 - subset only elements in the test set (i.e. not in the array `training_indices`), denote these `test_true_int` and `test_pred_int`
 
 *** =hint
@@ -434,7 +436,7 @@ Now use the dictionary to do the conversion for both the `true_label` and `pred_
 *** =sample_code
 ```{python}
 # list of ints for true and predicted labels 
-true_int = ...
+true_int = [label_dict[l] for l in true_label]
 pred_int = ...
 
 # list of ints for true and predicted only test set
@@ -483,6 +485,7 @@ plot_confusion_matrix(cm,target_names=label_list)
 
 Notice that this is TERRIBLE! Can you think of why? 
 
+--- type:MultipleChoiceExercise lang:python xp:50 skills:2 key:7f5cb08571
 *** =instructions
 - Do you think it's caused by downsampling?
 - Only one training example for each class?
@@ -490,16 +493,20 @@ Notice that this is TERRIBLE! Can you think of why?
 - Is the norm a poor choice?
 
 *** =hint
-- Think about how different two files with the same labels were, were they very similar or very different?
+Think about how different two files with the same labels were, were they very similar or very different?
 
 
 *** =sct
-```{r}
-msg_bad = "That is not correct!"
-msg_success = "Exactly!"
-msg_bad = "That is not correct!"
-msg_bad = "That is not correct!"
-test_mc(4, [msg_bad, msg_success,msg_bad,msg_bad])
+```{python}
+
+msg1 = "Great job!"
+msg2 = "Wrong, try again. Maybe have a look at the hint."
+msg3 = "Not so good... Maybe have a look at the hint."
+msg4 = "Incorrect. Maybe have a look at the hint."
+test_mc(correct = 2, msgs = [msg1, msg2, msg3, msg4])
+
+success_msg("Well done! Now move on and explore some of the features in more detail.")
+
 ```
 
 The main reason is likely that we are using 1 known training example as our template. Downsampling to 200Hz, will have an impact, which you can check but even at the full rate, the accuracy will not improve vastly.
