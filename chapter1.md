@@ -426,7 +426,7 @@ for x in set(true_label):
     i+=1
 ```
 
---- type:NormalExercise lang:python xp:100 skills:1 key:fd14aa3eab
+--- type:NormalExercise lang:python xp:100 skills:1 key:c146087ba6
 Now use the dictionary to do the conversion for both the `true_label` and `pred_label` for the test set.
 
 *** =instructions
