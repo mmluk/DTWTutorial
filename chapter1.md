@@ -260,6 +260,7 @@ ylabel('Sample '+str(id2))
 plt.title('np.linalg.norm(x-y)')
 ```
 
+--- type:NormalExercise lang:python xp:100 skills:1 key:10223ad899
 You can also specify your own norm used to determine the cost measure by the DTW.
 *** =instructions
 - Define a `my_custom_norm` function that that takes two arguments `x` and `y` and returns the square of the difference
@@ -330,6 +331,7 @@ print('Minimum distance found:', dist)
 Lets apply this to all files in the dataset. For this naive example, let's find one file of each word type and use this as a template training example. Obviously this is not ideal, in accuracy or complexity but there are use cases where we know some underlying true 'template' that we want to dig out of some time-series data. 
 
 We will revisit a better algorithm afterwards.
+
 
 ## Naive DTW Classifier - using only minimum distance to training example
 ```{python}
@@ -423,6 +425,8 @@ for x in set(true_label):
     label_list.append(x)
     i+=1
 ```
+
+--- type:NormalExercise lang:python xp:100 skills:1 key:10223ad896
 Now use the dictionary to do the conversion for both the `true_label` and `pred_label` for the test set.
 
 *** =instructions
@@ -482,10 +486,9 @@ cm = confusion_matrix(test_pred_int,test_true_int)
 plot_confusion_matrix(cm,target_names=label_list)
 ```
 
+--- type:MultipleChoiceExercise lang:python xp:50 skills:2 key:7f5cb08571
 
 Notice that this is TERRIBLE! Can you think of why? 
-
---- type:MultipleChoiceExercise lang:python xp:50 skills:2 key:7f5cb08571
 *** =instructions
 - Do you think it's caused by downsampling?
 - Only one training example for each class?
