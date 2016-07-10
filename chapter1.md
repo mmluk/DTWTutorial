@@ -15,10 +15,8 @@ This measure distinguishes the underlying pattern rather than looking for an exa
 
 Much of the following material is taken from our blog and case studies from our website: http://www.sflscientific.com
 
-
+What cases is DTW useful for when comparing two time-series? Time-series have:
 *** =instructions
-What cases is DTW useful for when comparing two time-series?
-time-series have:
 - different phases 
 - different total lengths
 - different pause lengths
