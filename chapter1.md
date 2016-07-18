@@ -480,8 +480,10 @@ plot_confusion_matrix(cm,target_names=label_list)
 ```
 
 --- type:MultipleChoiceExercise lang:python xp:50 skills:2 key:7f5cb08571
+## Final question
 
 Notice that this is TERRIBLE! Can you think of why? 
+
 *** =instructions
 - Do you think it's caused by downsampling?
 - Only one training example for each class?
