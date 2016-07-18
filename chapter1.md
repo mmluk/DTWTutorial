@@ -70,10 +70,10 @@ Have a look at the plot. In which case, are points in the curves connected by th
 # The pre exercise code runs code to initialize the user's workspace.
 # You can use it to load packages, initialize datasets and draw a plot in the viewer
 
-from IPython.display import Image
-import matplotlib.pyplot as plt
-%matplotlib inline
-%pylab inline
+# from IPython.display import Image
+# import matplotlib.pyplot as plt
+# %matplotlib inline
+# %pylab inline
 ```
 
 *** =sct
