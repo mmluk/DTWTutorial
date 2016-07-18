@@ -254,6 +254,7 @@ plt.title('np.linalg.norm(x-y)')
 ```
 
 --- type:NormalExercise lang:python xp:100 skills:1 key:10223ad899
+## Needs Exercise title
 You can also specify your own norm used to determine the cost measure by the DTW.
 *** =instructions
 - Define a `my_custom_norm` function that that takes two arguments `x` and `y` and returns the square of the difference
@@ -420,7 +421,7 @@ for x in set(true_label):
 ```
 
 --- type:NormalExercise lang:python xp:100 skills:1 key:c146087ba6
-## Needs Exercise title
+## Needs Exercise title also
 Now use the dictionary to do the conversion for both the `true_label` and `pred_label` for the test set.
 
 *** =instructions
