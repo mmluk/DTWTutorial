@@ -43,38 +43,6 @@ Figure 1 shows what happens when we compare two time-series, symbolised as a red
 
 The bottom image shows a similarity score that would be given by Dynamic Time Warping. You can see that the rough shapes of the waves would match up, giving a high similarity score. Notice that DTW is not exactly a distance metric as the triangle inequality does not hold.
 
-
-*** =pre_exercise_code
-```{r}
-# The pre exercise code runs code to initialize the user's workspace.
-# You can use it to load packages, initialize datasets and draw a plot in the viewer
-
-from IPython.display import Image
-import matplotlib.pyplot as plt
-%matplotlib inline
-%pylab inline
-```
-
-Have a look at the plot that showed up in the viewer. Which type of measure would give a greater similarity between red and blue curves, when you use the black vertical lines to compare points?
-
-In which case will the similarity score be better (i.e. the case where the waves are more similar): 
-*** =instructions
-- Euclidean matching better
-- DTW matching better
-
-*** =hint
-Have a look at the plot. In which case, are points in the curves connected by the black lines more similar.
-
-
-*** =sct
-```{python}
-msg1 = "Great job!"
-msg2 = "Wrong, try again. Maybe have a look at the hint."
-test_mc(correct = 1, msgs = [msg1, msg2])
-
-success_msg("Well done! Now move on and explore some of the features in more detail.")
-```
-
 In general, events that have similar shapes but different magnitudes, lengths and especially phases can prevent a machine from correctly identifying sequences as similar events using traditional distance metrics. DTW allows us to get around this issue by asynchronously mapping the curves together.
 
 <center><img src="https://raw.githubusercontent.com/mmluk/DTWTutorial/master/Images/path_differences.png"></center>
@@ -87,6 +55,35 @@ For DTW, thec figure above right, represents a walk over the optimal path. The o
 
 To find the optimal path, DTW checks all possible paths (subject to certain constraints) from the bottom left to the top right, computing the equivalent of a similarity score between the waves for each. The one with the largest similarity is kept.
 
+Have a look at the plot that showed up in the viewer. Which type of measure would give a greater similarity between red and blue curves, when you use the black vertical lines to compare points?
+
+In which case will the similarity score be better (i.e. the case where the waves are more similar): 
+*** =instructions
+- Euclidean matching better
+- DTW matching better
+
+*** =hint
+Have a look at the plot. In which case, are points in the curves connected by the black lines more similar.
+
+*** =pre_exercise_code
+```{r}
+# The pre exercise code runs code to initialize the user's workspace.
+# You can use it to load packages, initialize datasets and draw a plot in the viewer
+
+# from IPython.display import Image
+# import matplotlib.pyplot as plt
+# %matplotlib inline
+# %pylab inline
+```
+
+*** =sct
+```{python}
+msg1 = "Great job!"
+msg2 = "Wrong, try again. Maybe have a look at the hint."
+test_mc(correct = 1, msgs = [msg1, msg2])
+
+success_msg("Well done! Now move on and explore some of the features in more detail.")
+```
 
 --- type:NormalExercise lang:python xp:100 skills:1 key:fd14aa3eaa
 ## A Simple Example
@@ -94,6 +91,19 @@ To find the optimal path, DTW checks all possible paths (subject to certain cons
 Let's start with a naive speech recognition example of DTW to show how the algorithm works, and then we will suggest a more complicated version of the analysis that can be found on our website.
 
 A dataset of file labels, `labels`, and data `data`,  is available in the workspace.
+
+Both `labels` and `data` are stored in numpy arrays and can be accessed as a standard array. Let's have a look at what the raw data looks like.
+
+What labels to the files 0 and 8 have? 
+*** =instructions
+- Import matplotlib.pyplot as `plt`
+- Use `plt.plot()` to plot `data[0]` and `data[8]` onto the same image. You should use the first positional argument, and the `label` keyword, `alpha` keyword with 0.2 as the shading.
+- Show the plot using `plt.show()`.
+
+*** =hint
+You don't have to program anything for the first instruction, just take a look at the first line of code.
+- Use `import ___ as ___` to import `matplotlib.pyplot` as `plt`.
+- Use `plt.plot(___,label=___,alpha=0.2)` for the third instruction.
 
 *** =pre_exercise_code
 ```{python}
@@ -111,19 +121,6 @@ for i in range():
 import numpy as np
 ```
 
-Both `labels` and `data` are stored in numpy arrays and can be accessed as a standard array. Let's have a look at what the raw data looks like.
-
-What labels to the files 0 and 8 have? 
-*** =instructions
-- Import matplotlib.pyplot as `plt`
-- Use `plt.plot()` to plot `data[0]` and `data[8]` onto the same image. You should use the first positional argument, and the `label` keyword, `alpha` keyword with 0.2 as the shading.
-- Show the plot using `plt.show()`.
-
-*** =hint
-You don't have to program anything for the first instruction, just take a look at the first line of code.
-- Use `import ___ as ___` to import `matplotlib.pyplot` as `plt`.
-- Use `plt.plot(___,label=___,alpha=0.2)` for the third instruction.
-
 *** =sample_code
 ```{python}
 # Show the labels for file 0 and 8.
@@ -134,8 +131,6 @@ plot('label for file 0 is:',labels[0])
 
 
 # Make a scatter plot: with data of files 0 and 8 and set c to ints
-
-
 
 ```
 
@@ -259,6 +254,7 @@ plt.title('np.linalg.norm(x-y)')
 ```
 
 --- type:NormalExercise lang:python xp:100 skills:1 key:10223ad899
+## Needs Exercise title
 You can also specify your own norm used to determine the cost measure by the DTW.
 *** =instructions
 - Define a `my_custom_norm` function that that takes two arguments `x` and `y` and returns the square of the difference
@@ -425,6 +421,7 @@ for x in set(true_label):
 ```
 
 --- type:NormalExercise lang:python xp:100 skills:1 key:c146087ba6
+## Needs Exercise title also
 Now use the dictionary to do the conversion for both the `true_label` and `pred_label` for the test set.
 
 *** =instructions
@@ -485,8 +482,10 @@ plot_confusion_matrix(cm,target_names=label_list)
 ```
 
 --- type:MultipleChoiceExercise lang:python xp:50 skills:2 key:7f5cb08571
+## Final question
 
 Notice that this is TERRIBLE! Can you think of why? 
+
 *** =instructions
 - Do you think it's caused by downsampling?
 - Only one training example for each class?
