@@ -80,7 +80,7 @@ Have a look at the plot. In which case, are points in the curves connected by th
 ```{python}
 msg1 = "Great job!"
 msg2 = "Wrong, try again. Maybe have a look at the hint."
-test_mc(correct = 1, msgs = [msg1, msg2])
+test_mc(correct = 1, msgs = [msg2, msg1])
 
 success_msg("Well done! Now move on and explore some of the features in more detail.")
 ```
