@@ -11,6 +11,26 @@ Typical time-series techniques usually apply algorithms, be it SVMs, logistic re
 
 Dynamic time warping (DTW) is a useful distance-like/similarity score that allows comparisons of two time-series sequences with varying lengths and speeds. Simple examples include detection of people 'walking' via wearable devices, arrhythmia in ECG, and speech recognition. 
 
+
+Is DTW a distance/similarity score?
+*** =instructions
+- True 
+- False
+
+*** =hint
+
+
+*** =pre_exercise_code
+```{r}
+```
+
+*** =sct
+```{r}
+msg_bad = "That is not correct!"
+msg_success = "Exactly!"
+test_mc(1, [msg_success,msg_bad])
+```
+
 This measure distinguishes the underlying pattern rather than looking for an exact match in the raw time-series. As its name suggestions, the usual Euclidean distance in problems is replaced with a dynamically adjusted score. DTW thus allows us to retain the temporal dynamics by directly modeling the time-series. 
 
 Much of the following material is taken from our blog and case studies from our website: http://www.sflscientific.com
@@ -110,7 +130,7 @@ You don't have to program anything for the first instruction, just take a look a
 # import scipy libraries to load data
 import scipy.io.wavfile
 import scipy.signal as sig
-https://raw.githubusercontent.com/mmluk/DTWTutorial/master/
+# https://raw.githubusercontent.com/mmluk/DTWTutorial/master/
 with open('https://raw.githubusercontent.com/mmluk/DTWTutorial/master/data/sounds/wavToTag.txt') as f:
     labels = np.array([l.replace('\n', '') for l in f.readlines()])
 
@@ -127,11 +147,18 @@ import numpy as np
 plot('label for file 0 is:',labels[0])
 
 
+
 # Import matplotlib.pyplot
 
-
 # Make a scatter plot: with data of files 0 and 8 and set c to ints
+plt.plot(data[0], label='Sample '+str(id1))
 
+
+
+plt.title('Raw data for two speakers',size=20)
+plt.ylabel('Amplitude')
+plt.xlabel('Measurement')
+plt.legend()
 ```
 
 *** =solution
@@ -157,7 +184,6 @@ plt.legend()
 *** =sct
 ```{python}
 # SCT written with pythonwhat: https://github.com/datacamp/pythonwhat/wiki
-
 
 test_object("data",
             undefined_msg = "Don't remove the definition of the predefined `data` object.",
