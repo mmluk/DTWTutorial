@@ -141,7 +141,7 @@ labels = f.ix[:,0].tolist()
 
 data = []
 for i in range(187):
-  data.append(scipy.io.wavfile.read('data/sounds/{}.wav'.format(i))[1])
+  data.append(scipy.io.wavfile.read('https://raw.githubusercontent.com/mmluk/DTWTutorial/master/data/sounds/{}.wav'.format(i))[1])
 
 import numpy as np
 ```
