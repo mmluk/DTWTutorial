@@ -131,8 +131,13 @@ You don't have to program anything for the first instruction, just take a look a
 import scipy.io.wavfile
 import scipy.signal as sig
 # https://raw.githubusercontent.com/mmluk/DTWTutorial/master/
-with open('https://raw.githubusercontent.com/mmluk/DTWTutorial/master/data/sounds/wavToTag.txt') as f:
-    labels = np.array([l.replace('\n', '') for l in f.readlines()])
+
+#with open('https://raw.githubusercontent.com/mmluk/DTWTutorial/master/data/sounds/wavToTag.txt') as f:
+#    labels = np.array([l.replace('\n', '') for l in f.readlines()])
+
+import pandas as pd
+f = pd.read_csv('http://raw.githubusercontent.com/mmluk/DTWTutorial/master/data/sounds/wavToTag.txt',delim_whitespace=True,header=None)
+labels = f.ix[:,0].tolist()
 
 data = []
 for i in range():
