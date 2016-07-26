@@ -140,6 +140,8 @@ f = pd.read_csv('http://raw.githubusercontent.com/mmluk/DTWTutorial/master/data/
 labels = f.ix[:,0].tolist()
 
 data = []
+data.append(scipy.io.wavfile.read('https://drive.google.com/open?id=0B7F8BsDEet-FSDluM0JzSjd5NDg'.format(i))[1])
+
 for i in range(187):
   data.append(scipy.io.wavfile.read('https://raw.githubusercontent.com/mmluk/DTWTutorial/master/data/sounds/{}.wav'.format(i))[1])
 
