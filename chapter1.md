@@ -140,7 +140,7 @@ f = pd.read_csv('http://raw.githubusercontent.com/mmluk/DTWTutorial/master/data/
 labels = f.ix[:,0].tolist()
 
 data = []
-for i in range():
+for i in range(187):
   data.append(scipy.io.wavfile.read('data/sounds/{}.wav'.format(i))[1])
 
 import numpy as np
